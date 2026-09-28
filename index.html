@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>era-of-wind | OπO大学 - 風の時代の海賊ギルド</title>
     <style>
-        /* 分水嶺と風を表現するベーススタイル */
+        /* 分水嶺を表現するベーススタイル */
         :root {
             --sea-of-japan: #2b4b6f; /* 日本海へ向かう水の蒼 */
             --pacific-ocean: #1a3622; /* 太平洋へ向かう森の緑 */
@@ -23,7 +23,7 @@
             overflow-x: hidden;
         }
 
-        /* 背景：塩尻の分水嶺をCSSグラデーションで表現 */
+        /* 背景：塩尻の分水嶺をグラデーションで表現 */
         .hero-section {
             position: relative;
             min-height: 100vh;
@@ -41,27 +41,32 @@
                 rgba(26,54,34,0.8) 51%, 
                 var(--pacific-ocean) 100%
             );
-            /* もし実際の塩尻の風景写真があれば、以下のコメントを外して設定できます */
-            /* background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('shiojiri-landscape.jpg'); */
-            /* background-size: cover; background-position: center; */
         }
 
-        /* 風のアニメーション効果 */
+        /* 🌬️ 改良版：外部画像を使わない「風」のアニメーション */
         .wind-particles {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-            opacity: 0.3;
-            animation: windMove 20s linear infinite;
-            pointer-events: none;
+            /* CSSの線で「斜めに吹く風」を描画 */
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.03) 0px,
+                rgba(255, 255, 255, 0.03) 2px,
+                transparent 2px,
+                transparent 150px
+            );
+            background-size: 200% 200%;
+            /* 10秒かけて風が右下へ流れ続ける */
+            animation: windMove 10s linear infinite;
+            pointer-events: none; /* クリックの邪魔にならないようにする */
         }
 
         @keyframes windMove {
-            from { background-position: 0 0; }
-            to { background-position: 1000px 500px; }
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
         }
 
         /* マニフェストのタイポグラフィ */
@@ -125,7 +130,7 @@
             font-family: serif;
         }
 
-        /* アクションボタン */
+        /* アクションボタン（Vinの赤） */
         .action-button {
             display: inline-block;
             margin-top: 2rem;
@@ -191,6 +196,7 @@
                 馬鹿な失敗を笑い飛ばし、新しい知恵へと発酵させる宴が始まります。
             </p>
             
+            <!-- ユーザー名 kiki054-n を組み込んだリンク -->
             <a href="https://github.com/kiki054-n/era-of-wind" class="action-button">
                 🏴‍☠️ GitHubで失敗をコミットする
             </a>
