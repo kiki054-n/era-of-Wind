@@ -9,6 +9,7 @@
             --sea-of-japan: #2b4b6f; /* 日本海へ向かう水の蒼 */
             --pacific-ocean: #1a3622; /* 太平洋へ向かう森の緑 */
             --wine-red: #722f37; /* Vin（生命力）の赤 */
+            --magic-purple: #5c2c70; /* 遊びと魔法の紫 */
             --text-light: #fdfbf7;
             --gold: #d4af37;
         }
@@ -157,7 +158,7 @@
         .action-button {
             display: inline-block;
             width: 100%;
-            max-width: 450px;
+            max-width: 500px;
             padding: 1.2rem 2rem;
             color: white;
             text-decoration: none;
@@ -168,7 +169,7 @@
             box-sizing: border-box;
         }
 
-        /* 3つのボタンの色分け */
+        /* 4つのボタンの色分け */
         .btn-issues {
             background-color: var(--wine-red);
             box-shadow: 0 4px 15px rgba(114, 47, 55, 0.5);
@@ -186,6 +187,13 @@
             box-shadow: 0 4px 15px rgba(26, 54, 34, 0.5);
         }
         .btn-docs:hover { background-color: #0e2014; transform: translateY(-3px); }
+
+        /* 新規追加：遊び場のボタン（紫） */
+        .btn-play {
+            background-color: var(--magic-purple);
+            box-shadow: 0 4px 15px rgba(92, 44, 112, 0.5);
+        }
+        .btn-play:hover { background-color: #3e1b4d; transform: translateY(-3px); }
 
         .footer {
             text-align: center;
@@ -227,26 +235,27 @@
                 私たち「風の時代の海賊ギルド（OπO大学）」が求めているのは、<br>
                 あなたの極上の失敗（焦げた鍋底）だけです。
             </p>
-            <p>
-                長野県塩尻市・日本のおへそから、<br>
-                馬鹿な失敗を笑い飛ばし、新しい知恵へと発酵させる宴が始まります。
-            </p>
             
             <!-- 導線（ボタン群） -->
             <div class="button-group">
-                <!-- 1. Issues（居酒屋の壁）への直通ボタン -->
+                <!-- 1. Issues（居酒屋の壁） -->
                 <a href="https://github.com/kiki054-n/era-of-wind/issues" class="action-button btn-issues">
                     🍻 居酒屋の壁（Issues）で馬鹿話に参加する
                 </a>
 
-                <!-- 2. リポジトリのトップへ飛ぶボタン -->
+                <!-- 2. リポジトリのトップ -->
                 <a href="https://github.com/kiki054-n/era-of-wind" class="action-button btn-repo">
                     🏴‍☠️ リポジトリ（焚き火の広場）を見る
                 </a>
 
-                <!-- 3. 用語辞典へ飛ぶボタン -->
+                <!-- 3. 用語辞典 -->
                 <a href="https://github.com/kiki054-n/era-of-wind/blob/main/GITHUB_FOR_FOOLS.md" class="action-button btn-docs">
                     📖 初心者必読『海賊のためのGitHub用語辞典』
+                </a>
+
+                <!-- 4. 新規追加：遊び場 -->
+                <a href="https://github.com/kiki054-n/era-of-wind/blob/main/GITHUB_PLAYGROUND.md" class="action-button btn-play">
+                    🎡 Githubであそぼう！（魔法とおもちゃ）
                 </a>
             </div>
         </div>
