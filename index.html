@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>era-of-wind | OπO大学 - 風の時代の海賊ギルド</title>
+    <style>
+        /* 分水嶺と風を表現するベーススタイル */
+        :root {
+            --sea-of-japan: #2b4b6f; /* 日本海へ向かう水の蒼 */
+            --pacific-ocean: #1a3622; /* 太平洋へ向かう森の緑 */
+            --wine-red: #722f37; /* Vin（生命力）の赤 */
+            --text-light: #fdfbf7;
+            --gold: #d4af37;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", Arial, "Hiragino Mincho ProN", "Yu Mincho", serif;
+            color: var(--text-light);
+            background-color: #0f171e;
+            overflow-x: hidden;
+        }
+
+        /* 背景：塩尻の分水嶺をCSSグラデーションで表現 */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(
+                135deg, 
+                var(--sea-of-japan) 0%, 
+                rgba(43,75,111,0.8) 49%, 
+                var(--gold) 50%, 
+                rgba(26,54,34,0.8) 51%, 
+                var(--pacific-ocean) 100%
+            );
+            /* もし実際の塩尻の風景写真があれば、以下のコメントを外して設定できます */
+            /* background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('shiojiri-landscape.jpg'); */
+            /* background-size: cover; background-position: center; */
+        }
+
+        /* 風のアニメーション効果 */
+        .wind-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            opacity: 0.3;
+            animation: windMove 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes windMove {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 500px; }
+        }
+
+        /* マニフェストのタイポグラフィ */
+        .manifesto {
+            z-index: 10;
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 4rem;
+            border-radius: 2px;
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            backdrop-filter: blur(5px);
+        }
+
+        .title {
+            font-size: 1.5rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .poetry {
+            font-size: 2rem;
+            line-height: 2.2;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .highlight {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 2.5rem;
+            margin: 0 0.2rem;
+        }
+
+        .wine-text {
+            color: #ff9e9e;
+            font-style: italic;
+        }
+
+        /* コンテンツセクション */
+        .content-section {
+            padding: 5rem 2rem;
+            background: #111;
+            text-align: center;
+        }
+
+        .concept-box {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            font-family: sans-serif;
+            font-size: 1.1rem;
+        }
+
+        h2 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-family: serif;
+        }
+
+        /* アクションボタン */
+        .action-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            background-color: var(--wine-red);
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.5);
+        }
+
+        .action-button:hover {
+            background-color: #8b0000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.8);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: #000;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヒーローセクション（分水嶺とマニフェスト） -->
+    <div class="hero-section">
+        <div class="wind-particles"></div>
+        <div class="manifesto">
+            <div class="title">era-of-wind | 羅針盤のさす方向</div>
+            <div class="poetry">
+                日本の中心 <span class="highlight">1</span> の分水嶺 <span class="highlight">2</span> に<br>
+                <span class="highlight">3</span> 人の馬鹿が集い、<br>
+                塩尻 <span class="highlight">4</span> の地で杯を交わす。<br><br>
+                Wine <span class="highlight">20</span> で <span class="wine-text">Vin（生命力）</span>を。<br><br>
+                双極の <strong>OπO</strong> が、羅針盤のさす方向。<br>
+                ここから、世界の WCCC がスタートする。
+            </div>
+        </div>
+    </div>
+
+    <!-- コンセプト説明セクション -->
+    <div class="content-section">
+        <div class="concept-box">
+            <h2>失敗するから始める創業。</h2>
+            <p>
+                ここは、予定調和の市場経済を脱獄し、<br>
+                「いただきます」と「おかげさま」の精神が循環する贈与経済（WCCC）を回すためのオープンソース広場です。
+            </p>
+            <p>
+                立派な経歴も、完璧な事業計画も必要ありません。<br>
+                私たち「風の時代の海賊ギルド（OπO大学）」が求めているのは、<br>
+                あなたの極上の失敗（焦げた鍋底）だけです。
+            </p>
+            <p>
+                長野県塩尻市・日本のおへそから、<br>
+                馬鹿な失敗を笑い飛ばし、新しい知恵へと発酵させる宴が始まります。
+            </p>
+            
+            <a href="https://github.com/あなたのユーザー名/era-of-wind" class="action-button">
+                🏴‍☠️ GitHubで失敗をコミットする
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 OπO University / era-of-wind - 失敗駆動型カンパニー
+    </div>
+
+</body>
+</html>
