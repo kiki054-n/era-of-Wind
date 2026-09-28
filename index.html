@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>era-of-wind | OπO大学 - 風の時代の海賊ギルド</title>
     <style>
-        /* 分水嶺を表現するベーススタイル */
         :root {
             --sea-of-japan: #2b4b6f; /* 日本海へ向かう水の蒼 */
             --pacific-ocean: #1a3622; /* 太平洋へ向かう森の緑 */
@@ -23,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* 背景：塩尻の分水嶺をグラデーションで表現 */
+        /* ヒーローセクション（はみ出した風を隠すために overflow: hidden を追加） */
         .hero-section {
             position: relative;
             min-height: 100vh;
@@ -33,6 +32,7 @@
             align-items: center;
             text-align: center;
             padding: 2rem;
+            overflow: hidden; 
             background: linear-gradient(
                 135deg, 
                 var(--sea-of-japan) 0%, 
@@ -43,30 +43,48 @@
             );
         }
 
-        /* 🌬️ 改良版：外部画像を使わない「風」のアニメーション */
-        .wind-particles {
+        /* 🌬️ 確実に動く「暴風」レイヤー（全ブラウザ対応） */
+        .wind-layer {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* CSSの線で「斜めに吹く風」を描画 */
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.03) 0px,
-                rgba(255, 255, 255, 0.03) 2px,
-                transparent 2px,
-                transparent 150px
-            );
-            background-size: 200% 200%;
-            /* 10秒かけて風が右下へ流れ続ける */
-            animation: windMove 10s linear infinite;
-            pointer-events: none; /* クリックの邪魔にならないようにする */
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            pointer-events: none;
         }
 
-        @keyframes windMove {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 100% 100%; }
+        /* 遠くのゆっくりした風（細くて薄い） */
+        .wind-slow {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 80px,
+                rgba(255, 255, 255, 0.05) 80px,
+                rgba(255, 255, 255, 0.05) 81px,
+                transparent 81px,
+                transparent 150px
+            );
+            animation: blowWind 15s linear infinite;
+        }
+
+        /* 近くの速い風（太くて濃い） */
+        .wind-fast {
+            background: repeating-linear-gradient(
+                -45deg,
+                transparent,
+                transparent 120px,
+                rgba(255, 255, 255, 0.15) 120px,
+                rgba(255, 255, 255, 0.15) 123px,
+                transparent 123px,
+                transparent 250px
+            );
+            animation: blowWind 7s linear infinite;
+        }
+
+        /* Transformを使って物理的に画面をスライドさせる（絶対に動く） */
+        @keyframes blowWind {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(200px, 200px); }
         }
 
         /* マニフェストのタイポグラフィ */
@@ -162,9 +180,12 @@
 </head>
 <body>
 
-    <!-- ヒーローセクション（分水嶺とマニフェスト） -->
+    <!-- ヒーローセクション -->
     <div class="hero-section">
-        <div class="wind-particles"></div>
+        <!-- 確実に動く2層の風 -->
+        <div class="wind-layer wind-slow"></div>
+        <div class="wind-layer wind-fast"></div>
+        
         <div class="manifesto">
             <div class="title">era-of-wind | 羅針盤のさす方向</div>
             <div class="poetry">
@@ -196,7 +217,6 @@
                 馬鹿な失敗を笑い飛ばし、新しい知恵へと発酵させる宴が始まります。
             </p>
             
-            <!-- ユーザー名 kiki054-n を組み込んだリンク -->
             <a href="https://github.com/kiki054-n/era-of-wind" class="action-button">
                 🏴‍☠️ GitHubで失敗をコミットする
             </a>
