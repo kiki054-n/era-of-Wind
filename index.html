@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* ヒーローセクション（はみ出した風を隠すために overflow: hidden を追加） */
+        /* ヒーローセクション */
         .hero-section {
             position: relative;
             min-height: 100vh;
@@ -43,7 +43,7 @@
             );
         }
 
-        /* 🌬️ 確実に動く「暴風」レイヤー（全ブラウザ対応） */
+        /* 🌬️ 確実に動く「暴風」レイヤー */
         .wind-layer {
             position: absolute;
             top: -100%;
@@ -53,7 +53,6 @@
             pointer-events: none;
         }
 
-        /* 遠くのゆっくりした風（細くて薄い） */
         .wind-slow {
             background: repeating-linear-gradient(
                 -45deg,
@@ -67,7 +66,6 @@
             animation: blowWind 15s linear infinite;
         }
 
-        /* 近くの速い風（太くて濃い） */
         .wind-fast {
             background: repeating-linear-gradient(
                 -45deg,
@@ -81,7 +79,6 @@
             animation: blowWind 7s linear infinite;
         }
 
-        /* Transformを使って物理的に画面をスライドさせる（絶対に動く） */
         @keyframes blowWind {
             0% { transform: translate(0, 0); }
             100% { transform: translate(200px, 200px); }
@@ -148,26 +145,47 @@
             font-family: serif;
         }
 
-        /* アクションボタン（Vinの赤） */
+        /* アクションボタン群 */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
         .action-button {
             display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 3rem;
-            background-color: var(--wine-red);
+            width: 100%;
+            max-width: 450px;
+            padding: 1.2rem 2rem;
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             border-radius: 50px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.5);
+            box-sizing: border-box;
         }
 
-        .action-button:hover {
-            background-color: #8b0000;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(114, 47, 55, 0.8);
+        /* 3つのボタンの色分け */
+        .btn-issues {
+            background-color: var(--wine-red);
+            box-shadow: 0 4px 15px rgba(114, 47, 55, 0.5);
         }
+        .btn-issues:hover { background-color: #8b0000; transform: translateY(-3px); }
+
+        .btn-repo {
+            background-color: var(--sea-of-japan);
+            box-shadow: 0 4px 15px rgba(43, 75, 111, 0.5);
+        }
+        .btn-repo:hover { background-color: #1c334d; transform: translateY(-3px); }
+
+        .btn-docs {
+            background-color: var(--pacific-ocean);
+            box-shadow: 0 4px 15px rgba(26, 54, 34, 0.5);
+        }
+        .btn-docs:hover { background-color: #0e2014; transform: translateY(-3px); }
 
         .footer {
             text-align: center;
@@ -180,9 +198,7 @@
 </head>
 <body>
 
-    <!-- ヒーローセクション -->
     <div class="hero-section">
-        <!-- 確実に動く2層の風 -->
         <div class="wind-layer wind-slow"></div>
         <div class="wind-layer wind-fast"></div>
         
@@ -199,7 +215,6 @@
         </div>
     </div>
 
-    <!-- コンセプト説明セクション -->
     <div class="content-section">
         <div class="concept-box">
             <h2>失敗するから始める創業。</h2>
@@ -217,9 +232,23 @@
                 馬鹿な失敗を笑い飛ばし、新しい知恵へと発酵させる宴が始まります。
             </p>
             
-            <a href="https://github.com/kiki054-n/era-of-wind" class="action-button">
-                🏴‍☠️ GitHubで失敗をコミットする
-            </a>
+            <!-- 導線（ボタン群） -->
+            <div class="button-group">
+                <!-- 1. Issues（居酒屋の壁）への直通ボタン -->
+                <a href="https://github.com/kiki054-n/era-of-wind/issues" class="action-button btn-issues">
+                    🍻 居酒屋の壁（Issues）で馬鹿話に参加する
+                </a>
+
+                <!-- 2. リポジトリのトップへ飛ぶボタン -->
+                <a href="https://github.com/kiki054-n/era-of-wind" class="action-button btn-repo">
+                    🏴‍☠️ リポジトリ（焚き火の広場）を見る
+                </a>
+
+                <!-- 3. 用語辞典へ飛ぶボタン -->
+                <a href="https://github.com/kiki054-n/era-of-wind/blob/main/GITHUB_FOR_FOOLS.md" class="action-button btn-docs">
+                    📖 初心者必読『海賊のためのGitHub用語辞典』
+                </a>
+            </div>
         </div>
     </div>
 
